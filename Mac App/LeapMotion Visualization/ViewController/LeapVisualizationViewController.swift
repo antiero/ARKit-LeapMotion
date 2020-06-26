@@ -127,7 +127,7 @@ class LeapVisualizationViewController: NSViewController {
             return
         }
         
-        stream.schedule(in: .main, forMode: .defaultRunLoopMode)
+        stream.schedule(in: .main, forMode: RunLoop.Mode.default)
         stream.delegate = self
         stream.open()
         self.outputStream = stream
@@ -147,6 +147,8 @@ extension LeapVisualizationViewController: MCSessionDelegate {
             
         case MCSessionState.notConnected:
             print("Not Connected: \(peerID.displayName)")
+        @unknown default:
+            print("MCSessionDelegate Unknown MCSessionState: \(peerID.displayName)")
         }
     }
     

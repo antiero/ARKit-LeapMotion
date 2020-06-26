@@ -133,7 +133,7 @@ extension MainViewController: MCSessionDelegate, MCBrowserViewControllerDelegate
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
         print("did receive stream")
         stream.delegate = self
-        stream.schedule(in: .main, forMode: .defaultRunLoopMode)
+        stream.schedule(in: .main, forMode: RunLoop.Mode.default)
         stream.open()
     }
     

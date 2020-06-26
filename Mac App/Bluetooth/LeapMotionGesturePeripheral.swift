@@ -108,7 +108,7 @@ extension LeapMotionGesturePeripheral: CBPeripheralManagerDelegate {
         print("\nSubscribed \(central) was removed from change notification of \(characteristic)")
         guard
             var centrals = subscribers[characteristic.uuid],
-            let index = centrals.index(of: central)
+            let index = centrals.firstIndex(of: central)
         else { return }
         centrals.remove(at: index)
         subscribers[characteristic.uuid] = centrals
